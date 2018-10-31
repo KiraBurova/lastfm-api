@@ -1,0 +1,9 @@
+<div *ngIf="artists" class="artists">
+  <div class="container">
+    <div class="artists__inner">
+    <div *ngFor="let artist of artists" class="artists__artist">
+      <app-single-artist [artist] = artist></app-single-artist>
+    </div>
+    </div>
+  </div>
+</div>

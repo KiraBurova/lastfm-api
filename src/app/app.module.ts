@@ -4,26 +4,33 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; 
+import { FormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
-import { AlbumsListComponent } from './components/albums-list/albums-list.component';
-import { SingleAlbumComponent } from './components/single-album/single-album.component';
-import { DetailedAlbumComponent } from './components/detailed-album/detailed-album.component';
+import { ArtistsListComponent } from './components/artists-list/artists-list.component';
+import { SingleArtistComponent } from './components/single-artist/single-artist.component';
+import { DetailedArtistComponent } from './components/detailed-artist/detailed-artist.component';
 
 import { FetchDataService } from './services/fetch-data/fetch-data.service';
+import { HeaderComponent } from './components/header/header.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlbumsListComponent,
-    SingleAlbumComponent,
-    DetailedAlbumComponent
+    ArtistsListComponent,
+    SingleArtistComponent,
+    DetailedArtistComponent,
+    HeaderComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [FetchDataService],
   bootstrap: [AppComponent]

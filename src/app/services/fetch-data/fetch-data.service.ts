@@ -17,7 +17,7 @@ export class FetchDataService {
   }
 
   getTracks (artist): Observable<any> {
-    return this.http.get<{}>(`http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&limit=10&api_key=${API_KEY}&format=json`)
+    return this.http.get<{}>(`http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid=${artist}&limit=10&api_key=${API_KEY}&format=json`)
   }
 
 

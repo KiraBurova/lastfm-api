@@ -1,0 +1,10 @@
+<div class="artist">
+  <a routerLink="/artist/{{artist.mbid}}" class="artist__link" (click)="getArtist()">
+  <div class="artist__main">
+    <div class="artist__overlay"></div>
+    <img [src]="artist.image['3']['#text']" [alt]="artist.name">
+    <h4 class="artist__name">{{artist.name}}</h4>
+    <span class="artist__listeners">{{artist.listeners | number}} listeneres</span>
+  </div>
+  </a>
+</div>

@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { AlbumsListComponent } from './components/albums-list/albums-list.component';
-import { DetailedAlbumComponent } from './components/detailed-album/detailed-album.component';
+import { ArtistsListComponent } from './components/artists-list/artists-list.component';
+import { DetailedArtistComponent } from './components/detailed-artist/detailed-artist.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/list', pathMatch: 'full' },
-  { path: 'list', component: AlbumsListComponent },
-  { path: 'artist/:id', component: DetailedAlbumComponent }
+  { path: '', redirectTo: '/artists', pathMatch: 'full' },
+  { path: 'artists', component: ArtistsListComponent },
+  { path: 'artist/:id', component: DetailedArtistComponent }
 ];
 
 @NgModule({

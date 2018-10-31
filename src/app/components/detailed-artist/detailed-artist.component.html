@@ -1,0 +1,18 @@
+<div>
+  <div class="detailed-artist">
+    <div class="detailed-artist__info">
+      <div class="detailed-artist__img">
+          <img [src]="artist.image['3']['#text']" [alt]="artist.name">
+      </div>
+      <h4>{{artist.name}}</h4>
+   </div>
+  <div *ngIf="tracks" class="detailed-artist__tracks">
+    <h5 class="">Top 10 track</h5>
+    <div *ngFor="let track of tracks" class="detailed-artist__track" (click)="showPlayer($event)">
+        <h5 class="detailed-artist__track-name">{{track.name}}</h5>
+        <span class="detailed-artist__played"> Played {{track.playcount | number}} times</span>
+    </div>
+  </div>
+</div>
+  <app-player *ngIf="openPlayer" [openPlayer]="openPlayer" [track]="track" [artist]="artist.name"></app-player>
+</div>
