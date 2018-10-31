@@ -1,0 +1,5 @@
+<div *ngIf="artists">
+  <div *ngFor="let artist of artists">
+    <app-single-album [artist] = artist></app-single-album>
+  </div>
+</div>

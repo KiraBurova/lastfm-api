@@ -1,0 +1,7 @@
+<a routerLink="/artist/{{artist.mbid}}" [queryParams]="{ 'name': artist.name }">
+<div>
+  <img [src]="artist.image['3']['#text']" [alt]="artist.name">
+  <h4>{{artist.name}}</h4>
+  <span>{{artist.listeners}}</span>
+</div>
+</a>

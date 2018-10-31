@@ -1,0 +1,11 @@
+<div *ngIf="tracks">
+  <div *ngFor="let track of tracks">
+      <img [src]="track.image['3']['#text']" [alt]="track.name">
+    <li>
+      <h4>{{track.name}}</h4>
+      <span>listeners {{track.listeners}}</span>
+      <span> playcount{{track.playcount}}</span>
+    </li>
+  </div>
+</div>
+
