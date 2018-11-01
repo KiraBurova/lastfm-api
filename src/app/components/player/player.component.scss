@@ -11,6 +11,13 @@
         height: 200px;
         flex-direction: column;
     }
+    &__buttons {
+        @media screen and(max-width: 600px) {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
     &__song {
         @media screen and(max-width: 600px) {
             text-align: center;

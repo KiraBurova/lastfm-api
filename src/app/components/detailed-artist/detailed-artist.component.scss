@@ -92,7 +92,7 @@
             width: 40%;
         }
         @media screen and(max-width: 600px) {
-            width: 80%;
+            width: 90%;
         }
     }
     &__top-10 {
@@ -109,8 +109,12 @@
         padding: 32px 0;
         &.active {
             background: url('../../../assets/img/icons/play.svg');
+            padding-left: 32px;
             background-repeat: no-repeat;
             background-position: left center;
+        }
+        &.active .detailed-artist__track-count {
+            display: none;
         }
         
     }

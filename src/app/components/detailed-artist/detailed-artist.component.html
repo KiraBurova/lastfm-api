@@ -17,7 +17,6 @@
         <div *ngIf="tracks" class="detailed-artist__tracks">
             <h5 class="detailed-artist__top-10">Top 10 tracks</h5>
             <div *ngFor="let track of tracks; let i = index" class="detailed-artist__track" (click)="showPlayer(track); clicked = track" [class.active]="clicked === track">
-
                 <h5 class="detailed-artist__track-name">
                     <span class="detailed-artist__track-count">{{i+1}}</span> {{track.name}}
                 </h5>
