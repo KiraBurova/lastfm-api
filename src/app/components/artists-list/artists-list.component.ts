@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { FetchDataService } from '../../services/fetch-data/fetch-data.service';
+import { FetchDataService } from "../../services/fetch-data/fetch-data.service";
 
 @Component({
-  selector: 'app-artists-list',
-  templateUrl: './artists-list.component.html',
-  styleUrls: ['./artists-list.component.scss']
+  selector: "app-artists-list",
+  templateUrl: "./artists-list.component.html",
+  styleUrls: ["./artists-list.component.scss"]
 })
 export class ArtistsListComponent implements OnInit {
+  constructor(private fetchDataService: FetchDataService) {}
 
-  constructor(private fetchDataService: FetchDataService) { }
-
-  artists:[] = [];
+  artists: [] = [];
 
   ngOnInit() {
-    this.getArtists()
+    this.getArtists();
   }
   getArtists(): void {
-    this.fetchDataService.getArtists()
-        .subscribe(artists => this.artists = artists.topartists.artist);
+    this.fetchDataService
+      .getArtists()
+      .subscribe(artists => (this.artists = artists.topartists.artist));
   }
-
 }

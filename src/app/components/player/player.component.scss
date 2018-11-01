@@ -1,40 +1,204 @@
-.player {
-    
-}
+@import '../../../assets/styles/variables.scss';
 
 .audioplayer {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 88px;
-    background: #000;
-    color: #fff;
-
-    &__timeline {
-        width: 554px;
-        height: 2px;
-        opacity: 0.2;
-        background-color: #ffffff;
+    background: $black;
+    color: $white;
+    @media screen and(max-width: 600px) {
+        height: 200px;
+        flex-direction: column;
     }
-
+    &__song {
+        @media screen and(max-width: 600px) {
+            text-align: center;
+        }
+    }
     &__artist {
         display: block;
         font-weight: bold;
         font-size: 14px;
     }
-
     &__track {
         font-size: 12px;
-        color: rgba($color: #fff, $alpha: 0.4);
+        color: rgba($color: $white, $alpha: 0.4);
+    }
+    &__time {
+        position: relative;
+        @media screen and(max-width: 600px) {
+            width: 60%;
+        }
+        .time,
+        .time-left {
+            position: absolute;
+            top: -8px
+        }
+        .time-left {
+            right: -50px;
+        }
+        .time {
+            left: -50px;
+        }
+    }
+    &__timeline {
+        position: relative;
+        width: 554px;
+        height: 2px;
+        background-color: rgba($color: $white, $alpha: 0.2);
+        @media screen and(max-width: 1060px) {
+            width: 255px;
+        }
+        @media screen and(max-width: 735px) {
+            width: 150px;
+        }
+        @media screen and(max-width: 600px) {
+            width: 100%;
+        }
+    }
+    &__playhead {
+        position: absolute;
+        left: 0;
+        height: 2px;
+        background: $white;
+    }
+    &__button-volume {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: url('../../../assets/img/icons/icon-4.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        @media screen and(max-width: 430px) {
+            left: -60px;
+        }
+    }
+    &__volume {
+        display: none;
+        position: relative;
+        height: 300px;
+        width: 20px;
+        background: $black;
+        @media screen and(max-width: 600px) {
+            width: 160px;
+            height: 20px;
+        }
+        &.open {
+            position: absolute;
+            display: block;
+            bottom: 60px;
+            @media screen and(max-width: 600px) {
+                height: 0;
+                bottom: 16px;
+                left: 60px;
+            }
+        }
+    }
+    &__volume-slider {
+        -webkit-appearance: none;
+        background: transparent;
+        position: absolute;
+        left: 10px;
+        top: 225px;
+        transform: rotate(-90deg);
+        transform-origin: left;
+        background: rgba($color: $white, $alpha: 0.6);
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        &::-ms-track {
+            width: 100%;
+            cursor: pointer;
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: $gray;
+            cursor: pointer;
+            margin-top: -6px;
+        }
+        &::-moz-range-thumb {
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: $gray;
+            cursor: pointer;
+        }
+        &::-ms-thumb {
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: $gray;
+            cursor: pointer;
+        }
+        &::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: $light;
+            border-radius: 2px;
+        }
+        &::-moz-range-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: $light;
+            border-radius: 2px;
+        }
+        &::-ms-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: transparent;
+            border-color: transparent;
+            border-width: 16px 0;
+            color: transparent;
+        }
+        &::-ms-fill-lower {
+            background: $light;
+            border-radius: 4px;
+        }
+        &::-ms-fill-upper {
+            background: $light;
+            border-radius: 4px;
+        }
+        @media screen and(max-width: 600px) {
+            transform: rotate(0);
+            top: 0;
+            left: 0;
+        }
     }
 }
 
-@for $i from 1 through 4 {
+@for $i from 1 through 3 {
     .audioplayer__button:nth-of-type(#{$i}) {
         width: 32px;
         height: 32px;
         background: url('../../../assets/img/icons/icon-#{$i}.svg');
+        background-position: center;
+        background-repeat: no-repeat;
         border: none;
         cursor: pointer;
+        &.play {
+            background: none;
+        }
+        &.play>div {
+            width: 0;
+            height: 0;
+            margin: 5px;
+            border-style: solid;
+            border-width: 8px 0 8px 16px;
+            border-color: transparent transparent transparent $white;
+        }
     }
 }

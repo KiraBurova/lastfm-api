@@ -1,17 +1,30 @@
-  <audio #music preload="auto" loop="false">
+<audio #music preload="auto" loop="false">
       <source src="" type="audio/mp3">
-          <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg">
+        <source src="https://dl.dropbox.com/s/oswkgcw749xc8xs/The-Noisy-Freaks.mp3?dl=1" type="audio/mp3">
+        <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg">
     </audio>
-    <div class="audioplayer">
+<div class="audioplayer">
+    <div class="audioplayer__buttons">
         <button class="audioplayer__button prev"></button>
-        <button class="audioplayer__button play" (click)="toggleAudio()"></button>
+        <button class="audioplayer__button" (click)="toggleAudio()" [class.play]="playAudio">
+          <div></div>
+        </button>
         <button class="audioplayer__button next"></button>
-        <div class="audioplayer__song">
-          <span class="audioplayer__artist">{{artist}}</span>
-          <span class="audioplayer__track">{{track}}</span>
+    </div>
+    <div class="audioplayer__song">
+        <span class="audioplayer__artist">{{artist}}</span>
+        <span class="audioplayer__track">{{track}}</span>
+    </div>
+    <div class="audioplayer__time">
+        <span class="time">{{currentTime ? currentTime : '00:00'}}</span>
+        <div class="audioplayer__timeline">
+            <div class="audioplayer__playhead" #playhead></div>
         </div>
-        <span class="time">0:20</span>
-        <div class="audioplayer__timeline"></div>
-        <span class="time-left">{{audio.minutes}}:{{audio.seconds}}</span>
-        <button class="audioplayer__button volume"></button>
-      </div>
+        <span class="time-left">{{duration}}</span>
+    </div>
+    <button class="audioplayer__button-volume" (click)="showVolume()">
+          <div class="audioplayer__volume" [class.open]="volumeShown" >
+            <input type="range" orient="vertical" value="5" min="0" max="100" class="audioplayer__volume-slider" #volume (change)="getVolume()"/>
+          </div>
+        </button>
+</div>
