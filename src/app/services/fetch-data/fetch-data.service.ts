@@ -17,6 +17,12 @@ export class FetchDataService {
     );
   }
 
+  getArtist(artist): Observable<any> {
+    return this.http.get<{}>(
+      `https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid=${artist}&limit=10&api_key=${LAST_FM_API_KEY}&format=json`
+    );
+  }
+
   getTracks(artist): Observable<any> {
     return this.http.get<{}>(
       `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid=${artist}&limit=10&api_key=${LAST_FM_API_KEY}&format=json`

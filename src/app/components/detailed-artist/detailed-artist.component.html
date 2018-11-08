@@ -1,19 +1,21 @@
-<div>
+<div *ngIf="artist">
     <div class="detailed-artist">
         <div class="detailed-artist__left">
             <div class="detailed-artist__img">
-                <img [src]="artist.image['3']['#text']" [alt]="artist.name">
-                <p class="detailed-artist__description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aspernatur omnis eveniet molestiae, voluptates sint ut aperiam, minima veritatis similique corporis praesentium iste fuga libero sunt veniam accusantium? Sint, quidem.
+                <img *ngIf="artist.image" [src]="artist.image[3]['#text']" [alt]="artist.name">
+                <p *ngIf="artist.bio" class="detailed-artist__description" [innerHTML]="artist.bio.summary">
                 </p>
             </div>
             <div class="detailed-artist__middle">
                 <h4 class="detailed-artist__name">{{artist.name}}</h4>
-                <div class="detailed-artist__red">
-                    <div class="detailed-artist__red-triangle"></div>
-                </div>
                 <div class="detailed-artist__buttons">
-                    <button class="detailed-artist__share">Share</button>
-                    <button class="detailed-artist__like"></button>
+                    <div class="detailed-artist__red">
+                        <div class="detailed-artist__red-triangle"></div>
+                    </div>
+                    <div class="detailed-artist__buttons-inner">
+                        <button class="detailed-artist__share">Share</button>
+                        <button class="detailed-artist__like"></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -27,5 +29,5 @@
             </div>
         </div>
     </div>
-    <app-player *ngIf="openPlayer" [openPlayer]="openPlayer" [track]="track" [artist]="artist.name"></app-player>
+    <app-player *ngIf="openPlayer" [openPlayer]="openPlayer" [tracks]="tracks" [track]="track" [artist]="artist.name"></app-player>
 </div>

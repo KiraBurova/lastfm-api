@@ -7,6 +7,7 @@ import { FetchDataService } from "../../services/fetch-data/fetch-data.service";
   templateUrl: "./artists-list.component.html",
   styleUrls: ["./artists-list.component.scss"]
 })
+
 export class ArtistsListComponent implements OnInit {
   constructor(private fetchDataService: FetchDataService) {}
 

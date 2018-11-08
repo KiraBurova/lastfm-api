@@ -17,21 +17,20 @@ export class DetailedArtistComponent implements OnInit {
   ) {}
 
   tracks: [] = [];
-  artist = null;
+  artist: {} = {};
   track: string = null;
   id: number = null;
   openPlayer: boolean = false;
 
   ngOnInit() {
     this.id = this._route.snapshot.params.id;
-    this.artist =
-      this.passDataService.artist || JSON.parse(localStorage.getItem("artist"));
+    this.fetchDataService.getArtist(this.id).subscribe(artist => this.artist = artist.artist);
     this.getTracks(this.id);
   }
   getTracks(id): void {
     this.fetchDataService
       .getTracks(id)
-      .subscribe(tracks => (this.tracks = tracks.toptracks.track));
+      .subscribe(tracks => this.tracks = tracks.toptracks.track);
   }
   showPlayer(track) {
     this.openPlayer = true;

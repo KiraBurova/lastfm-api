@@ -19,10 +19,6 @@ export class SingleArtistComponent implements OnInit {
   ngOnInit() {
     this.passDataService.storeArtist(this.artist);
   }
-  getArtist() {
-    this.passDataService.artist = this.artist;
-    localStorage.setItem("artist", JSON.stringify(this.artist));
-  }
 
   getRandomColor() {
     var color = Math.floor(0x1000000 * Math.random()).toString(16);

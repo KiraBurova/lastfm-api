@@ -5,15 +5,15 @@
     </audio>
 <div class="audioplayer">
     <div class="audioplayer__buttons">
-        <button class="audioplayer__button prev"></button>
+        <button class="audioplayer__button prev" (click)="moveIndexPrevious()"></button>
         <button class="audioplayer__button" (click)="toggleAudio()" [class.play]="playAudio">
           <div></div>
         </button>
-        <button class="audioplayer__button next"></button>
+        <button class="audioplayer__button next" (click)="nextSong()"></button>
     </div>
     <div class="audioplayer__song">
         <span class="audioplayer__artist">{{artist}}</span>
-        <span class="audioplayer__track">{{track}}</span>
+        <span class="audioplayer__track">{{nextTrack}}</span>
     </div>
     <div class="audioplayer__time">
         <span class="time">{{currentTime ? currentTime : '00:00'}}</span>

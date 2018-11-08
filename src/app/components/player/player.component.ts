@@ -5,9 +5,12 @@ import { Component, OnInit, Input, ElementRef, ViewChild } from "@angular/core";
   templateUrl: "./player.component.html",
   styleUrls: ["./player.component.scss"]
 })
+
 export class PlayerComponent implements OnInit {
   @Input()
   openPlayer;
+  @Input()
+  tracks;
   @Input()
   track;
   @Input()
@@ -24,6 +27,8 @@ export class PlayerComponent implements OnInit {
   currentTime: string = null;
   playAudio: boolean = true;
   volumeShown: boolean = false;
+  index = 0;
+  nextTrack;
 
   constructor() {}
 
@@ -58,6 +63,48 @@ export class PlayerComponent implements OnInit {
         audio.pause();
       }
     };
+  }
+
+  moveIndexNext() {
+    if (this.tracks.length === 0) {
+        return;
+    }
+    if (this.index + 1 === this.tracks.length) {
+       this.index = 0;
+    } else {
+       this.index++;
+    }
+}
+
+moveIndexPrevious() {
+    if (this.tracks.length === 0) {
+        return;
+    }
+    if (this.index - 1 === -1) {
+       this.index = this.tracks.length - 1;
+    } else {
+       this.index--;
+    }
+
+}
+getCurrentItem() {
+  console.log(this.tracks[this.index])
+    return this.tracks[this.index];
+}
+
+
+  nextSong() {
+
+    this.tracks.forEach((item, index) => {
+      if(this.track === item.name) {
+      if (index > 0) {
+          console.log("Previous: " + this.tracks[index - 1].name);
+      }
+      if (index < this.tracks.length - 1) {
+         this.nextTrack = this.tracks[index + 1].name;
+      }
+    }
+  });
   }
 
   showVolume() {
